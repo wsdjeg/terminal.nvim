@@ -14,7 +14,7 @@ local function increase_window()
     end
   end
 end
-local function open_win()
+local function open_win(cwd)
   winid = vim.api.nvim_open_win(0, true, {
     relative = 'editor',
     width = math.floor(vim.o.columns * 0.8),
@@ -34,7 +34,7 @@ local function open_win()
     end,
   })
   vim.cmd('setlocal nobuflisted nonumber norelativenumber')
-  vim.fn.termopen(vim.o.shell)
+  vim.fn.jobstart(vim.o.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
   vim.cmd.startinsert()
   vim.api.nvim_set_option_value(
     'winhighlight',
@@ -44,9 +44,9 @@ local function open_win()
   vim.fn.timer_start(math.floor(1000 / fps + 0.5), increase_window, { ['repeat'] = 1 })
 end
 
-function M.open()
+function M.open(cwd)
   if not vim.api.nvim_win_is_valid(winid) then
-    open_win()
+    open_win(cwd)
   else
     vim.api.nvim_set_current_win(winid)
     vim.cmd.startinsert()
