@@ -26,7 +26,7 @@ local function open_win(cwd)
     height = 1,
     row = 1,
     col = math.floor(vim.o.columns * 0.1),
-    border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+    border = config.border,
   })
   vim.cmd.enew()
   bufid = vim.api.nvim_get_current_buf()
@@ -39,7 +39,7 @@ local function open_win(cwd)
     end,
   })
   vim.cmd('setlocal nobuflisted nonumber norelativenumber')
-  vim.fn.jobstart(vim.o.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
+  vim.fn.jobstart(config.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
   vim.cmd.startinsert()
   vim.api.nvim_set_option_value(
     'winhighlight',
