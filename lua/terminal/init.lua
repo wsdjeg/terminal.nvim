@@ -4,6 +4,11 @@ local winid = -1
 local bufid = -1
 local fps = 60
 
+local config = {
+  shell = vim.o.shell,
+  border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+}
+
 local function increase_window()
   if vim.api.nvim_win_is_valid(winid) then
     local wininfo = vim.api.nvim_win_get_config(winid)
@@ -51,6 +56,10 @@ function M.open(cwd)
     vim.api.nvim_set_current_win(winid)
     vim.cmd.startinsert()
   end
+end
+
+function M.setup(opt)
+  config = vim.tbl_deep_extend('force', config, opt or {})
 end
 
 return M

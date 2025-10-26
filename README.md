@@ -12,10 +12,13 @@ with [nvim-plug](https://github.com/wsdjeg/nvim-plug)
 require('plug').add({
   {
     'wsdjeg/terminal.nvim',
-
-    config = function()
-      vim.keymap.set('n', "<leader>'", '<cmd>lua require("terminal").open()<cr>', { silent = true })
-    end,
+    opts = {
+      shell = vim.o.shell,
+      border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+    },
+    keys = {
+      { 'n', "<leader>'", '<cmd>lua require("terminal").open()<cr>', { silent = true } },
+    },
   },
 })
 ```
