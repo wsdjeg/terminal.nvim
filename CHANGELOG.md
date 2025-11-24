@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/wsdjeg/terminal.nvim/compare/v1.0.1...v1.0.2) (2025-11-24)
+
+
+### Bug Fixes
+
+* add license ([d45f599](https://github.com/wsdjeg/terminal.nvim/commit/d45f5997509c491a56f82aef3b57fbc6eaa2a96b))
+
 ## [1.0.1](https://github.com/wsdjeg/terminal.nvim/compare/v1.0.0...v1.0.1) (2025-11-24)
 
 
