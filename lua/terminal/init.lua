@@ -37,9 +37,11 @@ local function open_win(cwd)
         vim.api.nvim_win_close(winid, true)
         vim.cmd('doautocmd WinEnter')
       end
-      if vim.api.nvim_buf_is_valid(bufid) then
-        vim.api.nvim_buf_delete(bufid, { force = true, unload = false })
-      end
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(bufid) then
+          vim.api.nvim_buf_delete(bufid, { force = true, unload = false })
+        end
+      end)
     end,
   })
   vim.cmd('setlocal nobuflisted nonumber norelativenumber')
