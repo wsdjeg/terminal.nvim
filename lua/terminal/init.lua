@@ -33,9 +33,13 @@ local function open_win(cwd)
   vim.api.nvim_create_autocmd({ 'TermClose' }, {
     buffer = bufid,
     callback = function()
-      vim.api.nvim_win_close(winid, true)
-      vim.cmd('doautocmd WinEnter')
-      vim.api.nvim_buf_delete(bufid, { force = true, unload = false })
+      if vim.api.nvim_win_is_valid(winid) then
+        vim.api.nvim_win_close(winid, true)
+        vim.cmd('doautocmd WinEnter')
+      end
+      if vim.api.nvim_buf_is_valid(bufid) then
+        vim.api.nvim_buf_delete(bufid, { force = true, unload = false })
+      end
     end,
   })
   vim.cmd('setlocal nobuflisted nonumber norelativenumber')
