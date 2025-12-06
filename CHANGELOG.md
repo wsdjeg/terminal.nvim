@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/wsdjeg/terminal.nvim/compare/v1.0.2...v1.1.0) (2025-12-06)
+
+
+### Features
+
+* add picker terminal source highlight opt ([68fdd8f](https://github.com/wsdjeg/terminal.nvim/commit/68fdd8f8746fb8ca4b15741fb8c7f1e0e63f4b3d))
+* add terminal picker source ([488c5a1](https://github.com/wsdjeg/terminal.nvim/commit/488c5a18c7bd4c4772f89748d44a92554f2acc5d))
+
+
+### Bug Fixes
+
+* fix bufdel.nvim support ([b701d48](https://github.com/wsdjeg/terminal.nvim/commit/b701d488bb8efaffaf275a9289f159afb76e832a))
+* use schedule startinsert ([1155ef2](https://github.com/wsdjeg/terminal.nvim/commit/1155ef272b0d270131f00f38b07d79c8e88ef7c8))
+* use vim.schedule to avoid E937 ([45c6446](https://github.com/wsdjeg/terminal.nvim/commit/45c6446368ccb857c9ca7c0bf4a586f699d80b84))
+
 ## [1.0.2](https://github.com/wsdjeg/terminal.nvim/compare/v1.0.1...v1.0.2) (2025-11-24)
 
 
