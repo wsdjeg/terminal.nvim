@@ -59,7 +59,7 @@ local function open_win(cwd)
   })
   vim.cmd('setlocal nobuflisted')
   vim.fn.jobstart(config.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
-  vim.cmd.startinsert()
+  vim.schedule(vim.cmd.startinsert)
 end
 
 function M.open(cwd)
@@ -67,7 +67,7 @@ function M.open(cwd)
     open_win(cwd)
   else
     vim.api.nvim_set_current_win(winid)
-    vim.cmd.startinsert()
+    vim.schedule(vim.cmd.startinsert)
   end
 end
 
@@ -77,7 +77,7 @@ function M.open_with_terminal(term_buf)
   end
   vim.api.nvim_win_set_buf(winid, term_buf)
   vim.api.nvim_set_current_win(winid)
-  vim.cmd.startinsert()
+  vim.schedule(vim.cmd.startinsert)
 end
 
 function M.setup(opt)
