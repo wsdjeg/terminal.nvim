@@ -2,6 +2,12 @@
 
 terminal.nvim is a simple floating terminal plugin for Neovim.
 
+[![GitHub License](https://img.shields.io/github/license/wsdjeg/terminal.nvim)](LICENSE)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wsdjeg/terminal.nvim)](https://github.com/wsdjeg/terminal.nvim/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/wsdjeg/terminal.nvim)](https://github.com/wsdjeg/terminal.nvim/commits/master/)
+[![GitHub Release](https://img.shields.io/github/v/release/wsdjeg/terminal.nvim)](https://github.com/wsdjeg/terminal.nvim/releases)
+[![luarocks](https://img.shields.io/luarocks/v/wsdjeg/terminal.nvim)](https://luarocks.org/modules/wsdjeg/terminal.nvim)
+
 ![Image](https://github.com/user-attachments/assets/58e919cd-92be-49f8-a7d6-b33ea2a7a423)
 
 ## Install
@@ -12,12 +18,22 @@ with [nvim-plug](https://github.com/wsdjeg/nvim-plug)
 require('plug').add({
   {
     'wsdjeg/terminal.nvim',
-    opts = {
-      shell = vim.o.shell,
-      border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
-    },
     keys = {
-      { 'n', "<leader>'", '<cmd>lua require("terminal").open()<cr>', { silent = true } },
+      {
+        'n',
+        "<leader>'",
+        '<cmd>lua require("terminal").open()<cr>',
+        { silent = true, desc = 'open terminal in current path' },
+      },
+      {
+        'n',
+        '<leader>"',
+        '<cmd>lua require("terminal").open(vim.fn.expand("%:p:h"))<cr>',
+        { silent = true, desc = 'open terminal in file path' },
+      },
+    },
+    opts = {
+      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     },
   },
 })
