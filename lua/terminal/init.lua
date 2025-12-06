@@ -7,6 +7,18 @@ local fps = 60
 local config = {
   shell = vim.o.shell,
   border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+  picker = {
+    highlight = {
+      --  [25768   ] ✓ { "cmd.exe", "/s", "/c", '"cmd.exe"' } (~\AppData\Local\nvim) buf:2
+      --   jobpid   status            cmd                             cwd            bufnr
+      jobpid = 'Number',
+      status_ok = 'DiagnosticOk',
+      status_error = 'DiagnosticError',
+      cmd = 'String',
+      cwd = 'Comment',
+      buffer = 'Comment',
+    },
+  },
 }
 
 local function increase_window()
@@ -82,6 +94,10 @@ end
 
 function M.setup(opt)
   config = vim.tbl_deep_extend('force', config, opt or {})
+end
+
+function M.get_config()
+  return config
 end
 
 return M

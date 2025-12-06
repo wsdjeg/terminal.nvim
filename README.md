@@ -41,6 +41,18 @@ require('plug').add({
     },
     opts = {
       border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+      picker = {
+        highlight = {
+          --  [25768   ] ✓ { "cmd.exe", "/s", "/c", '"cmd.exe"' } (~\AppData\Local\nvim) buf:2
+          --   jobpid   status            cmd                             cwd            bufnr
+          jobpid = 'Number',
+          status_ok = 'DiagnosticOk',
+          status_error = 'DiagnosticError',
+          cmd = 'String',
+          cwd = 'Comment',
+          buffer = 'Comment',
+        },
+      },
     },
   },
 })
@@ -51,4 +63,3 @@ require('plug').add({
 terminal.nvim also provides a `terminal` source for picker.nvim. Use `:Picker terminal` to fuzzy find opened terminal buffers.
 
 ![picker-terminal](https://github.com/user-attachments/assets/ac94089e-7106-42f5-b887-143d747c2b7a)
-
