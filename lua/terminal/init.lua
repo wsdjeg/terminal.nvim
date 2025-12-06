@@ -19,7 +19,8 @@ local function increase_window()
     end
   end
 end
-local function open_win(cwd)
+
+local function open_float_windows()
   winid = vim.api.nvim_open_win(0, true, {
     relative = 'editor',
     width = math.floor(vim.o.columns * 0.8),
@@ -28,6 +29,18 @@ local function open_win(cwd)
     col = math.floor(vim.o.columns * 0.1),
     border = config.border,
   })
+  vim.api.nvim_set_option_value(
+    'winhighlight',
+    'NormalFloat:Normal,FloatBorder:WinSeparator',
+    { win = winid }
+  )
+  vim.cmd('setlocal nonumber norelativenumber')
+  vim.fn.timer_start(math.floor(1000 / fps + 0.5), increase_window, { ['repeat'] = 1 })
+  return winid
+end
+
+local function open_win(cwd)
+  winid = open_float_windows()
   vim.cmd.enew()
   bufid = vim.api.nvim_get_current_buf()
   vim.api.nvim_create_autocmd({ 'TermClose' }, {
@@ -44,15 +57,9 @@ local function open_win(cwd)
       end)
     end,
   })
-  vim.cmd('setlocal nobuflisted nonumber norelativenumber')
+  vim.cmd('setlocal nobuflisted')
   vim.fn.jobstart(config.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
   vim.cmd.startinsert()
-  vim.api.nvim_set_option_value(
-    'winhighlight',
-    'NormalFloat:Normal,FloatBorder:WinSeparator',
-    { win = winid }
-  )
-  vim.fn.timer_start(math.floor(1000 / fps + 0.5), increase_window, { ['repeat'] = 1 })
 end
 
 function M.open(cwd)
@@ -62,6 +69,15 @@ function M.open(cwd)
     vim.api.nvim_set_current_win(winid)
     vim.cmd.startinsert()
   end
+end
+
+function M.open_with_terminal(term_buf)
+  if not vim.api.nvim_win_is_valid(winid) then
+    winid = open_float_windows()
+  end
+  vim.api.nvim_win_set_buf(winid, term_buf)
+  vim.api.nvim_set_current_win(winid)
+  vim.cmd.startinsert()
 end
 
 function M.setup(opt)
