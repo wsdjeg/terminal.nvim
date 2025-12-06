@@ -10,6 +10,13 @@ terminal.nvim is a simple floating terminal plugin for Neovim.
 
 ![Image](https://github.com/user-attachments/assets/58e919cd-92be-49f8-a7d6-b33ea2a7a423)
 
+<!-- vim-markdown-toc GFM -->
+
+- [Install](#install)
+- [Picker Source](#picker-source)
+
+<!-- vim-markdown-toc -->
+
 ## Install
 
 with [nvim-plug](https://github.com/wsdjeg/nvim-plug)
@@ -38,3 +45,10 @@ require('plug').add({
   },
 })
 ```
+
+## Picker Source
+
+terminal.nvim also provides a `terminal` source for picker.nvim. Use `:Picker terminal` to fuzzy find opened terminal buffers.
+
+![picker-terminal](https://github.com/user-attachments/assets/ac94089e-7106-42f5-b887-143d747c2b7a)
+
