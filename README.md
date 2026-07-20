@@ -2,6 +2,7 @@
 
 terminal.nvim is a simple floating terminal plugin for Neovim.
 
+[![Run Tests](https://github.com/wsdjeg/terminal.nvim/actions/workflows/test.yml/badge.svg)](https://github.com/wsdjeg/terminal.nvim/actions/workflows/test.yml)
 [![GitHub License](https://img.shields.io/github/license/wsdjeg/terminal.nvim)](LICENSE)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wsdjeg/terminal.nvim)](https://github.com/wsdjeg/terminal.nvim/issues)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/wsdjeg/terminal.nvim)](https://github.com/wsdjeg/terminal.nvim/commits/master/)
@@ -63,3 +64,4 @@ require('plug').add({
 terminal.nvim also provides a `terminal` source for picker.nvim. Use `:Picker terminal` to fuzzy find opened terminal buffers.
 
 ![picker-terminal](https://github.com/user-attachments/assets/ac94089e-7106-42f5-b887-143d747c2b7a)
+
