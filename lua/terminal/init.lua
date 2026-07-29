@@ -7,6 +7,7 @@ local fps = 60
 local config = {
   shell = vim.o.shell,
   border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+  shells = {},
   picker = {
     highlight = {
       --  [25768   ] ✓ { "cmd.exe", "/s", "/c", '"cmd.exe"' } (~\AppData\Local\nvim) buf:2
@@ -17,6 +18,8 @@ local config = {
       cmd = 'String',
       cwd = 'Comment',
       buffer = 'Comment',
+      shell_name = 'Function',
+      shell_cmd = 'Comment',
     },
   },
 }
@@ -51,7 +54,7 @@ local function open_float_windows()
   return winid
 end
 
-local function open_win(cwd)
+local function open_win(cwd, shell)
   winid = open_float_windows()
   vim.cmd.enew()
   bufid = vim.api.nvim_get_current_buf()
@@ -70,13 +73,13 @@ local function open_win(cwd)
     end,
   })
   vim.cmd('setlocal nobuflisted')
-  vim.fn.jobstart(config.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
+  vim.fn.jobstart(shell or config.shell, { term = true, cwd = cwd or vim.fn.getcwd() })
   vim.schedule(vim.cmd.startinsert)
 end
 
-function M.open(cwd)
+function M.open(cwd, shell)
   if not vim.api.nvim_win_is_valid(winid) then
-    open_win(cwd)
+    open_win(cwd, shell)
   else
     vim.api.nvim_set_current_win(winid)
     vim.schedule(vim.cmd.startinsert)
@@ -101,3 +104,4 @@ function M.get_config()
 end
 
 return M
+
