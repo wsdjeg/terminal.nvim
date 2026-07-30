@@ -20,6 +20,8 @@ for fuzzy-finding terminal buffers and selecting preset shells.
 - [📦 Installation](#-installation)
 - [🔧 Configuration](#-configuration)
 - [⚙️ Basic Usage](#-basic-usage)
+    - [API](#api)
+    - [Examples](#examples)
 - [🔌 Picker Sources](#-picker-sources)
     - [terminal](#terminal)
     - [terminal_shells](#terminal_shells)
@@ -215,6 +217,7 @@ Fuzzy select a preset shell and open a new terminal with it.
 ```
 :Picker terminal_shells
 ```
+![picker-terminal-shells](https://github.com/user-attachments/assets/727ddfca-6aee-4c5c-b54e-397348c65ab0)
 
 Each shell's availability is auto-checked via `executable()`:
 
