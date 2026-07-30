@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0](https://github.com/wsdjeg/terminal.nvim/compare/v1.1.0...v1.2.0) (2026-07-30)
+
+
+### Features
+
+* **picker:** add terminal_shells source for preset shell selection ([ec4f985](https://github.com/wsdjeg/terminal.nvim/commit/ec4f98535799fde011ce776dc8c4915c0ae4e2e1))
+
+
+### Bug Fixes
+
+* **picker:** store raw shell name in value and improve preview ([ef90291](https://github.com/wsdjeg/terminal.nvim/commit/ef90291dc380eff3e3fb20772137e0bd53570212))
+
+
+### Documentation
+
+* add picker terminal_shells screenshot and toc entries ([7b305b4](https://github.com/wsdjeg/terminal.nvim/commit/7b305b4d54ee5f4078f0e80e566d4567fc0c840a))
+* rewrite README to match picker.nvim style ([1248562](https://github.com/wsdjeg/terminal.nvim/commit/1248562c84e826933495116d3a27ce571a4accb6))
+* update README with full configuration, API and picker sources ([c5e2ae6](https://github.com/wsdjeg/terminal.nvim/commit/c5e2ae61dba67c698b3170997de8b6761c718dd4))
+
 ## [1.1.0](https://github.com/wsdjeg/terminal.nvim/compare/v1.0.2...v1.1.0) (2025-12-06)
 
 
